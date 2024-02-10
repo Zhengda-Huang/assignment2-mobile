@@ -1,7 +1,8 @@
-package com.cs4520.assignment1
+package com.cs4520.assignment1.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.cs4520.assignment1.R
 
 
 class MainActivity : AppCompatActivity() {

@@ -1,5 +1,6 @@
-package com.cs4520.assignment1
+package com.cs4520.assignment1.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.cs4520.assignment1.R
+import com.cs4520.assignment1.productlist.ProductListActivity
 import java.util.logging.Logger
 
 class LoginFragment : Fragment() {
@@ -38,22 +41,21 @@ class LoginFragment : Fragment() {
         loginButton = view.findViewById(R.id.loginButton)
 
         loginButton.setOnClickListener {
-            logger.info(usernameEditText.toString())
-            logger.info( passwordEditText.toString())
-            if (usernameEditText.toString() == "admin" && passwordEditText.toString() == "admin") {
-                navigateToProductListPage()
+            val username = usernameEditText.text.toString()
+            val password = passwordEditText.text.toString()
+
+            if (username == "admin" && password == "admin") {
                 usernameEditText.text.clear()
                 passwordEditText.text.clear()
-            }else{
-                Toast.makeText(context, "Incorrect Username/Password ", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(requireContext(), ProductListActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(context, "Incorrect Username/Password", Toast.LENGTH_SHORT).show()
             }
         }
 
         return view
-    }
-
-    private fun navigateToProductListPage(){
-
     }
 
     override fun onStart() {
